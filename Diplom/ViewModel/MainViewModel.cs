@@ -4,9 +4,9 @@ using Microsoft.Win32;
 using System.ComponentModel;
 using System.Windows.Controls;
 
-namespace Diplom;
+namespace Diplom.ViewModel;
 
-partial class ViewModel : ObservableObject
+partial class MainViewModel : ObservableObject
 {
     [ObservableProperty, NotifyCanExecuteChangedFor(nameof(CreateHeaderCommand))] private TextFile? _textFile;
     [ObservableProperty, NotifyCanExecuteChangedFor(nameof(DeleteHeaderCommand), nameof(JumpCommand))] private Header? _selectedHeader;
@@ -14,7 +14,7 @@ partial class ViewModel : ObservableObject
     [ObservableProperty] private bool _isNotReady = true;
     private readonly TextBox _presenter;
 
-    public ViewModel(TextBox presenter)
+    public MainViewModel(TextBox presenter)
     {
         _selection = new();
         _selection.PropertyChanged += NotifySelectionChanged;
